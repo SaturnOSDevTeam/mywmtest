@@ -1,6 +1,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <stdio.h>
+#include <X11/Xcursor/Xcursor.h>
 
 int main() {
     Display *display;

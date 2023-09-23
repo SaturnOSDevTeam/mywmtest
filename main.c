@@ -1,7 +1,6 @@
-#include <stdio.h>  // Include the <stdio.h> header for fprintf
-
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
+#include <stdio.h>
 
 int main() {
     Display *display;
@@ -24,6 +23,10 @@ int main() {
     XSelectInput(display, window, ExposureMask | KeyPressMask);
     XMapWindow(display, window);
 
+    /* 4. Set up mouse cursor */
+    Cursor cursor = XCreateFontCursor(display, XC_left_ptr);
+    XDefineCursor(display, window, cursor);
+
     /* Event loop */
     while (1) {
         XNextEvent(display, &event);
@@ -40,7 +43,8 @@ int main() {
         }
     }
 
-    /* 4. Clean up */
+    /* 5. Clean up */
+    XFreeCursor(display, cursor);
     XDestroyWindow(display, window);
     XCloseDisplay(display);
 

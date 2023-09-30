@@ -28,7 +28,7 @@ int main() {
     root = DefaultRootWindow(display);
 
     /* 2. Create initial window */
-    Window window = XCreateSimpleWindow(display, root, 0, 0, 800, 600, 1, BlackPixel(display, 0), WhitePixel(display, 0));
+    Window window = XCreateSimpleWindow(display, root, 0, 0, 1280, 800, 1, BlackPixel(display, 0), WhitePixel(display, 0));
 
     /* 3. Set up event handling */
     XSelectInput(display, window, ExposureMask | KeyPressMask);
@@ -52,7 +52,7 @@ int main() {
             system("nemo &");
         }
         else if (event.xkey.keycode == XKeysymToKeycode(display, XK_T)) {
-            system("alacritty &");
+            system("xterm &");
         }
         else if (event.xkey.keycode == XKeysymToKeycode(display, XK_F)) {
             system("firefox &");
